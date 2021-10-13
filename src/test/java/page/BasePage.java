@@ -1,24 +1,39 @@
 package page;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @Slf4j
 public class BasePage {
-    public String SITE_URL;
-    public String username;
+
     public WebDriver driver;
     public WebDriverWait wait;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    @BeforeEach
+    public void start() {
+        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\drivers\\chromedriver94.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 15);
     }
+
+    @AfterEach
+    public void finish() {
+        driver.quit();
+    }
+
 
     //Wai Wrapper Method
     public void waitVisibility(By elementBy) {
@@ -48,4 +63,6 @@ public class BasePage {
         waitVisibility(elementBy);
         assertTrue(driver.findElement(elementBy).isDisplayed());
     }
+
+
 }
