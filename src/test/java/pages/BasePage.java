@@ -1,4 +1,4 @@
-package page;
+package pages;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -17,8 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 public class BasePage {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
+    public static WebDriver driver;
+    public static WebDriverWait wait;
 
     @BeforeEach
     public void start() {
@@ -43,7 +43,6 @@ public class BasePage {
     //goTo Method
     public void goTo(String SITE_URL){
         driver.get(SITE_URL);
-
     }
 
     //Click Method
