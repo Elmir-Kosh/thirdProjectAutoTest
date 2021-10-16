@@ -17,29 +17,29 @@ public class Tests extends BasePage {
 
     @Test
     public void autoLog() {
-    mainPageLogin.mainPageEntryLogin();
-    mainPageLogin.mainPageEntryPassword();
+    mainPageLogin.mainPageEntryLogin()
+                 .mainPageEntryPassword();
     }
 
     @Test
     public void autoSendMessage(){
-        mainPageLogin.mainPageEntryLogin();
-        mainPageLogin.mainPageEntryPassword();
-    sendMessagePage.preparedMessageToSend();
-    sendMessagePage.enterMessageText();
-    sendMessagePage.sendMessage();
+        mainPageLogin.mainPageEntryLogin()
+                     .mainPageEntryPassword();
+    sendMessagePage.preparedMessageToSend()
+                   .enterMessageText()
+                   .sendMessage();
 
     }
 
     @Test
     public void deleteMessages(){
-        mainPageLogin.mainPageEntryLogin();
-        mainPageLogin.mainPageEntryPassword();
-        sendMessagePage.preparedMessageToSend();
-        sendMessagePage.enterMessageText();
-        sendMessagePage.sendMessage();
-    deleteMessages.moveCursorAndCheckbox();
-    deleteMessages.deleteMessages();
+        mainPageLogin.mainPageEntryLogin()
+                .mainPageEntryPassword();
+        sendMessagePage.preparedMessageToSend()
+                .enterMessageText()
+                .sendMessage();
+    deleteMessages.moveCursorAndCheckbox()
+                  .deleteMessages();
     }
 }
 
