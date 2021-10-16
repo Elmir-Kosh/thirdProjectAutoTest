@@ -1,35 +1,38 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 public class SendMessagePage extends BasePage{
-    public static final String address = "example-21@mail.ru";
-    public static final String newMessageBUTTON = "//span[@class=\"compose-button__txt\"]";
-    public static final String addresseeFIELD = "//input[@class=\"container--H9L5q size_s--3_M-_\"]";
-    public static final String sendMessageBUTTON = "//span[@tabindex=\"570\"]";
-    public static final String entryTextMessageFIELD = "//div[@class=\"editable-7ctg cke_editable cke_editable_inline cke_contents_true cke_show_borders\"]";
-    public static final String MessageText = "Hello";
-    public static final String closePopUpWindowBUTTON = "//span[@tabindex=\"1000\"]";
+    public static final String ADRESS = "example-21@mail.ru";
+    public static final String NEW_MESSAGE_BUTTON = "//span[@class=\"compose-button__txt\"]";
+    public static final String ADDRESSEE_FIELD = "//input[@class=\"container--H9L5q size_s--3_M-_\"]";
+    public static final String SEND_MESSAGE_BUTTON = "//span[@tabindex=\"570\"]";
+    public static final String SEND_EMPTY_MESSAGE_BUTTON = "//span[contains(text(), 'Отправить')]";
+    public static final String ENTRY_TEXT_MESSAGE_FIELD = "//div[@class=\"editable-7ctg cke_editable cke_editable_inline cke_contents_true cke_show_borders\"]";
+    public static final String MESSAGE_TEXT = "Hello";
+    public static final String CLOSE_POP_UP_WINDOW_BUTTON = "//span[@tabindex=\"1000\"]";
 
     public SendMessagePage preparedMessageToSend(){
-        click(By.xpath(newMessageBUTTON));
-        sendKeys((By.xpath(addresseeFIELD)), address);
+        click(By.xpath(NEW_MESSAGE_BUTTON));
+        sendKeys((By.xpath(ADDRESSEE_FIELD)), ADRESS);
         return this;
     }
 
     public SendMessagePage enterMessageText(){
-        click(By.xpath(entryTextMessageFIELD));
-        sendKeys(By.xpath(entryTextMessageFIELD), MessageText);
+        click(By.xpath(ENTRY_TEXT_MESSAGE_FIELD));
+        sendKeys(By.xpath(ENTRY_TEXT_MESSAGE_FIELD), MESSAGE_TEXT);
         return this;
     }
 
     public SendMessagePage sendMessage(){
-        click(By.xpath(sendMessageBUTTON));
-        if (driver.getPageSource().contains(MessageText)){
-            click(By.xpath(closePopUpWindowBUTTON));}
+
+        if (driver.getPageSource().contains(MESSAGE_TEXT)){
+            click(By.xpath(SEND_MESSAGE_BUTTON));
+            click(By.xpath(CLOSE_POP_UP_WINDOW_BUTTON));}
         else
-            click(By.xpath("//span[contains(text(), 'Отправить')]"));
+            click(By.xpath(SEND_MESSAGE_BUTTON));
+            click(By.xpath(SEND_EMPTY_MESSAGE_BUTTON));
         return this;
     }
 
