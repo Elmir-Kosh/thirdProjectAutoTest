@@ -1,6 +1,6 @@
 package pages;
 
-import lombok.extern.slf4j.Slf4j;
+//import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-@Slf4j
+//@Slf4j
 public class BasePage {
 
     public static WebDriver driver;
@@ -22,7 +22,7 @@ public class BasePage {
 
     @BeforeEach
     public void start() {
-        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\drivers\\chromedriver94.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
