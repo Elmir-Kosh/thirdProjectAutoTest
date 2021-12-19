@@ -1,0 +1,6 @@
+Tests\Tests.class
+pages\BasePage.class
+pages\MainPageLogin.class
+pages\Util.class
+pages\DeleteMessages.class
+pages\SendMessagePage.class
